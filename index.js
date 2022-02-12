@@ -2,7 +2,7 @@ const express =require("express");
 const path = require("path");
 const multer = require('multer');
 const fs = require("fs");
-const port = 8000;
+const port = 5000;
 const db = require('./config/mongoose');
 // const upload = require('./model/user');
 const blogWebsite = require('./model/blogwebsiteapp');
@@ -69,21 +69,7 @@ app.post('/post-query',function(req,res){
         return res.redirect('back');
     });
 });
-// app.post('/post-feedback', function (req, res) {
-    // db.then(function(db) {
-    //     delete req.body._id; // for safety reasons
-    //     db.collection('feedbacks').insertOne(req.body);
-    // });    
-    // res.send('Data received:\n' + JSON.stringify(req.body));
-// });
 
-// app.get('/view-feedbacks',  function(req, res) {
-//     db.then(function(db) {
-//         db.collection('feedbacks').find({}).toArray().then(function(feedbacks) {
-//             res.status(200).json(feedbacks);
-//         });
-//     });
-// });
 app.get("/delete-blog",function(req,res){
     let id =  req.query.id;
     blogWebsite.findByIdAndDelete(id,function(err){
