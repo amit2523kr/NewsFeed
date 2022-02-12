@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title><%=locals.title%></title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/footer.css"> 
+        <link rel="stylesheet" href="/css/header.css">
+      
+        
+    </head>
+    <body>
+        <%- include('header'); %>
+        <div id="blog">
+            <% for(let i of blogwebsiteapp) {%>
+                <div>
+                    <h1 style="margin-left:1.5rem;  margin-top:2.5rem;  color: rgb(29, 134, 175);"><%=i.Tagline%></h1>
+                    <p style="margin-left:1.5rem; margin-top:2.5rem; font-size: 1.2rem;"><%=i.Details%></p>
+                </div>
+                <div >
+                    <a  style="margin-left:1.5rem;"href="/delete-blog/?id=<%= i._id %>">
+                     <button  class="delete"> Delete</button>
+                   </a>
+                
+            <% } %>
+        </div>
+        <form id="newsfeed" action="/tech-blog" method="post" >
+            <div style="display:flex;" >
+            <input style="margin-left:1.5rem;" class="head" type="text" name="Tagline" placeholder="Enter the heading" required>
+            </div>
+         
+            <div style="display:flex;">
+            <textarea cols="30" rows="10" style="margin-left:1.5rem;"class="article" type="text" value="" name="Details" placeholder="Enter the text" required>
+                </textarea>
+            </div>
+            <div style="display:flex;">
+                <button style="margin-left:1.5rem;" class="btn" >Posts</button>
+            </div>
+        
+     
+        </form>
+        
+        <script src="/js/app.js"></script>
+        <%- include('footer'); %>
+    </body>
+    
+ 
+</html>
